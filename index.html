@@ -7,129 +7,225 @@
 <meta name="description" content="Collection Sebon : t-shirts retravaillés à la main. Lancement en décembre, précommande au 07 09 86 99 95.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Inter:wght@400;500;600&display=swap">
 <style>
-body{margin:0;background:#F4F1EA;color:#15120E;font-family:Inter,system-ui,sans-serif}
-a{color:#15120E}a:hover{color:#A8431F}
+:root{--ink:#111;--mute:#6B6B6B;--tile:#F1F1F1;--line:#E4E4E4;--pad:clamp(16px,4vw,56px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.5}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;letter-spacing:-.02em;margin:0;line-height:1.05}
+a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 30px;border-radius:999px;border:0;background:var(--ink);color:#fff;font-weight:600;font-size:14px;text-decoration:none}
+.pill.w{background:#fff;color:var(--ink)}
+.sub{color:var(--mute);margin:10px auto 0;max-width:520px}
+.sec{padding:72px 0 0}
+.sec h2{font-size:clamp(28px,4vw,40px);text-align:center}
+.sec .sub{text-align:center}
+
+/* annonce + hero */
+.ann{background:#fff;text-align:center;font-size:12.5px;padding:9px var(--pad);border-bottom:1px solid var(--line)}
+.hero{background:radial-gradient(120% 90% at 50% 0%,#3a3a3a 0%,#161616 70%);color:#fff}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 28px;padding:16px var(--pad)}
+.logo{font-family:"Inter Tight",sans-serif;font-weight:600;font-size:26px;letter-spacing:-.03em;text-decoration:none}
+.nav nav{display:flex;flex-wrap:wrap;gap:0 22px;font-size:14px;font-weight:500}
+.nav nav a{text-decoration:none;padding:12px 0;opacity:.9}
+.nav nav a:hover{opacity:1;text-decoration:underline}
+#cartBtn{margin-left:auto;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 6px;background:none;border:0;color:#fff;font-size:14px;font-weight:500}
+.heroin{text-align:center;padding:clamp(56px,10vw,120px) var(--pad) clamp(64px,10vw,120px)}
+.heroin h1{font-size:clamp(44px,8vw,84px)}
+.heroin p{max-width:560px;margin:18px auto 30px;color:#E2E2E2}
+
+/* tringle */
+#tringle{position:relative;padding-top:8px;margin-top:36px}
+.bar{position:absolute;top:18px;left:0;right:0;height:7px;background:var(--ink);border-radius:4px}
+.scroll{overflow-x:auto;padding:0 20px 18px}
+#rail{display:flex;width:max-content;margin:0 auto;gap:6px;padding-top:14px}
 .g{flex:none;width:92px;height:372px;padding:0;border:0;background:none;position:relative;transition:width .45s cubic-bezier(.2,.8,.2,1)}
-.g img{position:absolute;top:44px;left:50%;height:290px;width:auto;transform:translateX(-50%) perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 14px 14px rgba(21,18,14,.18))}
+.g img{position:absolute;top:44px;left:50%;height:290px;width:auto;transform:translateX(-50%) perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 14px 14px rgba(0,0,0,.18))}
 .g:hover,.g:focus-visible,.g.on{width:262px;outline:none}
 .g:hover img,.g:focus-visible img,.g.on img{transform:translateX(-50%) scale(1.06)}
-.g.on::after{content:"";position:absolute;left:50%;bottom:0;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#A8431F}
-.card:hover img{transform:scale(1.05)}
-.sz.on{background:#15120E;color:#F4F1EA}
-@media (prefers-reduced-motion:reduce){.g,.g img,.card img{transition:none}}
+.g.on::after{content:"";position:absolute;left:50%;bottom:0;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--ink)}
+.hook{position:absolute;top:0;left:50%;width:3px;height:52px;margin-left:-1.5px;background:#9A9A9A;border-radius:2px}
+.tag{position:absolute;top:26px;left:50%;margin-left:8px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:10px;font-weight:600;padding:3px 8px;border-radius:999px;white-space:nowrap;z-index:2}
+.hint{text-align:center;font-size:13px;color:var(--mute);margin:0;padding:0 20px}
 
-html{scroll-behavior:smooth}
-.hook{position:absolute;top:0;left:50%;width:3px;height:52px;margin-left:-1.5px;background:#8B8478;border-radius:2px}
-.tag{position:absolute;top:26px;left:50%;margin-left:8px;background:#A8431F;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;white-space:nowrap;z-index:2}
-.card{text-decoration:none;display:flex;flex-direction:column;gap:12px}
-.tile{background:#EAE5DA;border-radius:6px;height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px;box-sizing:border-box}
-.tile img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .4s}
-.meta{display:flex;justify-content:space-between;gap:12px;font-size:15px}
-.sz{min-width:52px;height:48px;border:1.5px solid #15120E;border-radius:4px;background:transparent;font-weight:600;font-size:15px}
+/* fiche */
+#fiche{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px 56px;padding-top:48px}
+.shot{flex:1 1 300px;max-width:480px;background:var(--tile);border-radius:14px;padding:32px;display:flex;justify-content:center}
+.shot img{width:100%;max-width:380px;max-height:440px;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(0,0,0,.18))}
+.info{flex:1 1 300px;max-width:440px;display:flex;flex-direction:column;gap:16px}
+.info h2{font-size:clamp(30px,4vw,44px)}
+.lab{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0}
+.sz{min-width:52px;height:46px;border:1px solid var(--ink);border-radius:999px;background:#fff;font-weight:600}
+.sz.on{background:var(--ink);color:#fff}
+.acts{display:flex;flex-wrap:wrap;gap:10px}
+.acts>*{flex:1 1 230px;min-height:52px;padding:0 18px;text-align:center}
+.pill.o{background:#fff;color:var(--ink);border:1px solid var(--ink)}
 
-dialog{border:0;border-radius:8px;padding:0;width:min(520px,calc(100vw - 24px));max-height:calc(100vh - 24px);background:#F4F1EA;color:#15120E}
-dialog::backdrop{background:rgba(21,18,14,.55)}
+/* grille */
+#grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 18px;margin-top:32px}
+@media(max-width:900px){#grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}.tile{height:210px!important;padding:14px!important}}
+.card{display:flex;flex-direction:column;gap:10px}
+.tile{position:relative;display:block;background:var(--tile);border-radius:12px;height:280px;padding:22px;overflow:hidden}
+.tile img{width:100%;height:100%;object-fit:contain;transition:transform .4s}
+.tile:hover img{transform:scale(1.05)}
+.chip{position:absolute;top:12px;left:12px;background:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.meta b{font-weight:600}
+.ic{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);background:#fff;display:flex;align-items:center;justify-content:center}
+.ic:hover{background:var(--ink);color:#fff}
+.center{text-align:center;margin-top:36px}
+#filterBar{display:none;align-items:center;justify-content:center;gap:12px;margin-top:16px;font-weight:600}
+
+/* bloc prix */
+.feat{display:flex;flex-wrap:wrap;align-items:center;gap:28px 40px}
+.feat .ph{flex:2 1 340px;background:#1A1A1A;border-radius:12px;height:clamp(260px,34vw,400px);display:flex;align-items:flex-end;justify-content:center;gap:10px;padding:24px 16px 0;overflow:hidden}
+.feat .ph img{height:92%;min-width:0;object-fit:contain;object-position:bottom}
+.feat .tx{flex:1 1 280px}
+.feat h2{font-size:clamp(28px,3.4vw,38px);text-align:left}
+.big{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:clamp(48px,7vw,76px);letter-spacing:-.03em;line-height:1;margin:6px 0 18px}
+
+/* mosaïque */
+.mos{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:118px;gap:16px;margin-top:32px}
+.mt{position:relative;border:0;padding:0;border-radius:12px;overflow:hidden;background:#1F1F1F;color:#fff;display:flex;align-items:center;justify-content:center}
+.mt img{position:absolute;inset:8% 8% -12%;width:84%;height:104%;object-fit:contain;opacity:.55;transition:transform .5s,opacity .3s}
+.mt:hover img{transform:scale(1.06);opacity:.4}
+.mt span{position:relative;font-family:"Inter Tight",sans-serif;font-weight:500;font-size:clamp(22px,3vw,34px);letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.a{grid-area:1/1/3/2}.b{grid-area:3/1/6/2}.c{grid-area:1/2/4/3}.d{grid-area:4/2/6/3}.e{grid-area:1/3/3/4}.f{grid-area:3/3/6/4}
+@media(max-width:720px){.mos{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.mt{grid-area:auto!important}}
+
+/* bandeau + pied */
+.band{margin-top:80px;background:radial-gradient(120% 120% at 50% 0%,#444 0%,#222 70%);color:#fff;text-align:center;padding:64px var(--pad)}
+.band h2{font-size:clamp(26px,4vw,38px)}
+.band p{color:#E2E2E2;max-width:520px;margin:12px auto 24px}
+.band .acts{justify-content:center;max-width:460px;margin:0 auto}
+footer{background:#111;color:#fff;padding:48px 0 28px}
+.fcols{display:flex;flex-wrap:wrap;gap:28px 64px}
+.fcols>div:first-child{flex:1 1 240px}
+.fcols h3{font-family:Inter,sans-serif;font-size:14px;font-weight:600;letter-spacing:0;margin-bottom:10px}
+.fcols p,.fcols a{display:block;margin:0 0 6px;color:#BDBDBD;font-size:13.5px;text-decoration:none}
+.fcols a:hover{color:#fff}
+.copy{text-align:center;color:#BDBDBD;font-size:12.5px;margin-top:36px}
+
+/* panier */
+dialog{border:0;border-radius:14px;padding:0;width:min(520px,calc(100vw - 24px));max-height:calc(100vh - 24px);background:#fff;color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
 .cw{padding:24px;display:flex;flex-direction:column;gap:18px}
-.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #DAD4C8}
-.row img{width:56px;height:64px;object-fit:contain;background:#EAE5DA;border-radius:4px}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row img{width:56px;height:64px;object-fit:contain;background:var(--tile);border-radius:8px}
 .x{margin-left:auto;min-width:44px;height:44px;border:0;background:none;font-size:22px}
 .fld{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
-.fld input{height:48px;border:1.5px solid #15120E;border-radius:4px;padding:0 12px;font:inherit;font-weight:400;background:#fff}
+.fld input{height:48px;border:1px solid var(--ink);border-radius:10px;padding:0 12px;font:inherit;font-weight:400;background:#fff}
 .pay{display:flex;flex-wrap:wrap;gap:8px}
-.pay label{flex:1 1 130px;display:flex;align-items:center;gap:8px;min-height:48px;padding:0 12px;border:1.5px solid #15120E;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer}
-.note{background:#EAE5DA;border-radius:4px;padding:12px;font-size:14px;line-height:1.5}
-.btn{height:54px;border:0;border-radius:4px;background:#15120E;color:#F4F1EA;font-weight:600;font-size:16px}
-.btn2{height:54px;display:flex;align-items:center;justify-content:center;border:1.5px solid #15120E;border-radius:4px;font-weight:600;font-size:16px;text-decoration:none}
+.pay label{flex:1 1 130px;display:flex;align-items:center;gap:8px;min-height:48px;padding:0 12px;border:1px solid var(--ink);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
+.note{background:var(--tile);border-radius:10px;padding:12px;font-size:14px}
 pre{white-space:pre-wrap;margin:8px 0 0;font:inherit}
+@media (prefers-reduced-motion:reduce){.g,.g img,.tile img,.mt img{transition:none}}
 </style>
 </head>
 <body>
-<div style="min-height: 100vh; background: #F4F1EA">
 
-<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding: 20px clamp(20px, 5vw, 72px); border-bottom: 1px solid #DAD4C8">
-<a href="#top" style="font-family: Anton, sans-serif; font-size: 34px; letter-spacing: 0.06em; text-decoration: none; line-height: 1">SEBON</a>
-<nav style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; font-weight: 500">
-<a href="#tringle" style="text-decoration: none; padding: 12px 0">La tringle</a>
-<a href="#collection" style="text-decoration: none; padding: 12px 0">Collection</a>
-<a href="#marque" style="text-decoration: none; padding: 12px 0">La marque</a>
-<a href="#contact" style="text-decoration: none; padding: 12px 0">Contact</a>
+<div class="ann">Lancement en décembre · Précommandes ouvertes au <a href="tel:+2250709869995">07 09 86 99 95</a></div>
+
+<div class="hero" id="top">
+<header class="nav">
+<a class="logo" href="#top">Sebon</a>
+<nav>
+<a href="#tringle">La tringle</a>
+<a href="#collection">Collection</a>
+<a href="#styles">Styles</a>
+<a href="#contact">Contact</a>
 </nav>
-<button id="cartBtn" aria-label="Ouvrir le panier" style="background: transparent; display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1.5px solid #15120E; border-radius: 999px; font-size: 14px; font-weight: 600">
-<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
-<span>Panier</span><span style="background: #15120E; color: #F4F1EA; border-radius: 999px; min-width: 24px; text-align: center; padding: 2px 6px"><span id="cart">0</span></span>
+<button id="cartBtn" aria-label="Ouvrir le panier">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+Panier (<span id="cart">0</span>)
 </button>
 </header>
+<div class="heroin">
+<h1>Le truc en plus</h1>
+<p>Désormais, à votre style, rajoutez le truc en plus. La collection Sebon : des t-shirts retravaillés à la main, bandes tissées, franges et découpes.</p>
+<a class="pill w" href="#tringle">Voir la collection</a>
+</div>
+</div>
 
-<section id="top" style="text-align: center; padding: 56px clamp(20px, 5vw, 72px) 28px">
-<p style="margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #A8431F">Collection Sebon · lancement en décembre</p>
-<h1 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(44px, 8vw, 104px); line-height: 0.98; text-transform: uppercase">Le truc<br>en plus</h1>
-<p style="margin: 20px auto 0; max-width: 520px; font-size: 17px; line-height: 1.5; color: #5A5348">Désormais, à votre style, rajoutez le truc en plus. Des t-shirts retravaillés à la main : bandes tissées, franges et découpes.</p>
+<section id="tringle">
+<div class="bar"></div>
+<div class="scroll"><div id="rail"></div></div>
+<p class="hint">Survole ou touche une pièce pour la retourner · fais glisser la tringle sur mobile</p>
 </section>
 
-<section id="tringle" style="position: relative; padding-top: 8px">
-<div style="position: absolute; top: 18px; left: 0; right: 0; height: 7px; background: #15120E; border-radius: 4px"></div>
-<div style="overflow-x: auto; padding: 0 20px 18px">
-<div id="rail" style="display: flex; width: max-content; margin: 0 auto; gap: 6px; padding-top: 14px">
-</div>
-</div>
-<p style="margin: 0; text-align: center; font-size: 13px; color: #5A5348; padding: 0 20px">Survole ou touche une pièce pour la retourner · fais glisser la tringle sur mobile</p>
-</section>
-
-<section id="fiche" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 32px 64px; max-width: 1120px; margin: 40px auto 0; padding: 40px clamp(20px, 5vw, 72px)">
-<div style="flex: 1 1 320px; max-width: 460px; background: #EAE5DA; border-radius: 6px; padding: 32px; display: flex; justify-content: center">
-<img id="selImg" src="" alt="" style="width: 100%; max-width: 380px; height: auto; max-height: 460px; object-fit: contain; filter: drop-shadow(0 18px 18px rgba(21,18,14,.2))">
-</div>
-<div style="flex: 1 1 320px; max-width: 460px; display: flex; flex-direction: column; gap: 18px">
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #A8431F" id="selRef"></p>
-<h2 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(36px, 5vw, 56px); line-height: 1; text-transform: uppercase" id="selName"></h2>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5A5348" id="selDesc"></p>
-<p style="margin: 0; font-size: 24px; font-weight: 700">15.000 FCFA</p>
+<section class="wrap" id="fiche">
+<div class="shot"><img id="selImg" src="" alt=""></div>
+<div class="info">
+<p class="lab" id="selRef"></p>
+<h2 id="selName"></h2>
+<p id="selDesc" style="margin:0;color:var(--mute)"></p>
+<p id="selPrice" style="margin:0;font-size:22px;font-weight:600"></p>
 <div>
-<p style="margin: 0 0 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Taille</p>
-<div id="sizes" style="display: flex; flex-wrap: wrap; gap: 10px">
+<p class="lab" style="margin-bottom:8px">Taille</p>
+<div id="sizes" style="display:flex;flex-wrap:wrap;gap:8px"></div>
 </div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<button id="add" style="flex: 1 1 200px; height: 54px; border: 0; border-radius: 4px; background: #15120E; color: #F4F1EA; font-weight: 600; font-size: 16px">Ajouter au panier</button>
-<a href="tel:+2250709869995" style="flex: 1 1 200px; height: 54px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 1.5px solid #15120E; border-radius: 4px; font-weight: 600; font-size: 16px; text-decoration: none">Appeler le 07 09 86 99 95</a>
-</div>
-</div>
-</section>
-
-<section id="collection" style="max-width: 1296px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 72px) 40px">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 28px">
-<h2 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 52px); text-transform: uppercase">Toute la collection</h2>
-<p style="margin: 0; font-size: 15px; color: #5A5348">11 pièces</p>
-</div>
-<div id="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px 20px">
-</div>
-</section>
-
-<section id="marque" style="background: #15120E; color: #F4F1EA; margin-top: 48px; padding: 72px clamp(20px, 5vw, 72px)">
-<div style="max-width: 1152px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start">
-<h2 style="flex: 1 1 320px; margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(36px, 6vw, 72px); line-height: 1; text-transform: uppercase">Quand Sebon,<br>c'est que c'est bon.</h2>
-<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px; font-size: 17px; line-height: 1.6; color: #D9D3C7">
-<p style="margin: 0">[HISTOIRE DE LA MARQUE — qui crée les pièces, où, depuis quand.]</p>
-<p style="margin: 0">Chaque t-shirt est coupé, effrangé et cousu à la main : aucune pièce n'est tout à fait identique à une autre.</p>
+<div class="acts">
+<button class="pill" id="add">Ajouter au panier</button>
+<a class="pill o" href="tel:+2250709869995">Appeler le 07 09 86 99 95</a>
 </div>
 </div>
 </section>
 
-<footer id="contact" style="padding: 48px clamp(20px, 5vw, 72px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; font-size: 15px; line-height: 1.7">
-<div><div style="font-family: Anton, sans-serif; font-size: 28px; letter-spacing: 0.06em">SEBON</div><div style="color: #5A5348">[VILLE / ADRESSE BOUTIQUE]</div></div>
-<div><div style="font-weight: 600">Précommander</div><div><a href="tel:+2250709869995">07 09 86 99 95</a></div><div style="color: #5A5348">Livraison : [ZONES ET DÉLAIS]</div></div>
-<div><div style="font-weight: 600">Suivre</div><div style="color: #5A5348">Instagram : [COMPTE]</div><div style="color: #5A5348">TikTok : [COMPTE]</div></div>
+<section class="sec wrap" id="collection">
+<h2>La collection</h2>
+<p class="sub">Onze pièces, toutes retravaillées à la main. Aucune n'est tout à fait identique à une autre.</p>
+<div id="filterBar"><span id="filterName"></span><button class="pill o" id="filterReset" style="min-height:44px;padding:0 18px">Tout voir</button></div>
+<div id="grid"></div>
+<div class="center"><button class="pill" id="more">Voir tout</button></div>
+</section>
+
+<section class="sec wrap">
+<div class="feat">
+<div class="ph"><img src="img/sebon-03.webp" alt=""><img src="img/sebon-04.webp" alt=""><img src="img/sebon-11.webp" alt=""></div>
+<div class="tx">
+<h2>Toute la collection à prix unique</h2>
+<p style="color:var(--mute);margin:12px 0 22px">Précommandez dès maintenant, payez par Wave, Orange Money ou à la livraison. Lancement en décembre.</p>
+<p style="margin:0;font-weight:600">La pièce</p>
+<p class="big">15.000 FCFA</p>
+<a class="pill" href="#tringle">Précommander</a>
+</div>
+</div>
+</section>
+
+<section class="sec wrap" id="styles">
+<h2>Par style</h2>
+<p class="sub">Choisissez votre truc en plus.</p>
+<div class="mos" id="mos"></div>
+</section>
+
+<section class="band">
+<h2>Soyez là pour le lancement</h2>
+<p>Les pièces sont faites à la main, en petites quantités. Réservez la vôtre avant décembre.</p>
+<div class="acts">
+<a class="pill w" href="#tringle">Choisir ma pièce</a>
+<a class="pill" style="border:1px solid #fff;background:transparent" href="tel:+2250709869995">Appeler</a>
+</div>
+</section>
+
+<footer id="contact">
+<div class="wrap">
+<div class="fcols">
+<div><a class="logo" href="#top" style="color:#fff;font-size:34px;margin-bottom:10px">Sebon</a><p style="max-width:260px">Le truc en plus. Quand Sebon, c'est que c'est bon.</p><p>[VILLE / ADRESSE BOUTIQUE]</p></div>
+<div><h3>Styles</h3><div id="footCats"></div></div>
+<div><h3>Commander</h3><a href="tel:+2250709869995">07 09 86 99 95</a><p>Wave · Orange Money · à la livraison</p><p>Livraison : [ZONES ET DÉLAIS]</p></div>
+<div><h3>Suivre</h3><p>Facebook : [PAGE]</p><p>Instagram : [COMPTE]</p><p>TikTok : [COMPTE]</p></div>
+</div>
+<p class="copy">© 2026 Sebon. Tous droits réservés.</p>
+</div>
 </footer>
-
-</div>
 
 <dialog id="cartDlg" aria-labelledby="cartTitle">
 <div class="cw">
 <div style="display:flex;align-items:center;justify-content:space-between">
-<h2 id="cartTitle" style="margin:0;font-family:Anton,sans-serif;font-weight:400;font-size:32px;text-transform:uppercase">Ma précommande</h2>
+<h2 id="cartTitle" style="font-size:28px">Ma précommande</h2>
 <button class="x" id="cartClose" aria-label="Fermer">×</button>
 </div>
 <div id="cartList"></div>
@@ -145,26 +241,14 @@ pre{white-space:pre-wrap;margin:8px 0 0;font:inherit}
 </div>
 </div>
 <div class="note" id="payNote"></div>
-<button class="btn" id="sendWa">Envoyer ma commande sur WhatsApp</button>
-<a class="btn2" id="callBtn" href="#">Appeler pour commander</a>
+<button class="pill" id="sendWa" style="min-height:54px">Envoyer ma commande sur WhatsApp</button>
+<a class="pill o" id="callBtn" href="#" style="min-height:54px">Appeler pour commander</a>
 <div class="note" id="demo" hidden></div>
 </div>
 </div>
 </dialog>
+
 <script>
-const P=[
-      ['01','img/sebon-01.webp','Zigzag Nuit','T-shirt oversize bleu nuit, appliqués zigzag en tissu tissé rose et longues bandes effrangées sur le bas.','Nouveau'],
-      ['02','img/sebon-02.webp','Écailles Camel','T-shirt oversize camel, deux colonnes de découpes lacérées qui laissent voir une doublure à motifs.',''],
-      ['03','img/sebon-03.webp','Ceinture Terre','T-shirt oversize crème, large bande de pagne tissé brun et noir bordée de franges en raphia.',''],
-      ['04','img/sebon-04.webp','Rouge Totem','T-shirt oversize rouge vif, trois fenêtres découpées sur des empiècements tissés à motifs géométriques.','Nouveau'],
-      ['05','img/sebon-05.webp','Rideau Ivoire','Débardeur oversize ivoire, rideau de lanières sur trois pagnes tissés et frange de raphia.',''],
-      ['06','img/sebon-06.webp','Ceinture Rosée','T-shirt oversize rose poudré, bande tissée bordeaux à chevrons, franges en raphia.',''],
-      ['07','img/sebon-07.webp','Zigzag Rose','T-shirt oversize rose poudré, appliqués zigzag bordeaux en diagonale, épaule et bas.',''],
-      ['08','img/sebon-08.webp','Spirale Noire','Débardeur noir à épaules marquées, découpe en spirale sur fond jaune rayé.','Nouveau'],
-      ['09','img/sebon-09.webp','Quatre Pagnes','T-shirt oversize caramel, quatre carrés de pagne tissé à franges : écru, jaune, bordeaux et noir.',''],
-      ['10','img/sebon-10.webp','Diagonale Sable','T-shirt oversize sable, empiècements tissés bruns et beiges posés en diagonale depuis l’épaule.',''],
-      ['11','img/sebon-11.webp','Éclats Indigo','T-shirt oversize indigo, éclats de pagne tissé ocre et noir sur le côté, finition frangée.','']
-];
 // ====== À RÉGLER : les vrais numéros et prix de la marque ======
 const CONFIG={
   whatsapp:'',            // numéro WhatsApp au format international sans +, ex. 2250700000000 (vide = mode démo)
@@ -174,31 +258,72 @@ const CONFIG={
   prixParDefaut:15000,     // prix de toutes les pièces, en FCFA
   prix:{}                 // exceptions par pièce, ex. {'04':20000}
 };
-let picked='04',size='M',cart=[];
+// id, image, nom, description, étiquette, styles
+const P=[
+ ['01','img/sebon-01.webp','Zigzag Nuit','T-shirt oversize bleu nuit, appliqués zigzag en tissu tissé rose et longues bandes effrangées sur le bas.','Nouveau',['Appliqués']],
+ ['02','img/sebon-02.webp','Écailles Camel','T-shirt oversize camel, deux colonnes de découpes lacérées qui laissent voir une doublure à motifs.','',['Découpes']],
+ ['03','img/sebon-03.webp','Ceinture Terre','T-shirt oversize crème, large bande de pagne tissé brun et noir bordée de franges en raphia.','',['Bandes tissées','Franges']],
+ ['04','img/sebon-04.webp','Rouge Totem','T-shirt oversize rouge vif, trois fenêtres découpées sur des empiècements tissés à motifs géométriques.','Nouveau',['Découpes']],
+ ['05','img/sebon-05.webp','Rideau Ivoire','Débardeur oversize ivoire, rideau de lanières sur trois pagnes tissés et frange de raphia.','',['Franges','Sans manches']],
+ ['06','img/sebon-06.webp','Ceinture Rosée','T-shirt oversize rose poudré, bande tissée bordeaux à chevrons, franges en raphia.','',['Bandes tissées','Franges']],
+ ['07','img/sebon-07.webp','Zigzag Rose','T-shirt oversize rose poudré, appliqués zigzag bordeaux en diagonale, épaule et bas.','',['Appliqués']],
+ ['08','img/sebon-08.webp','Spirale Noire','Débardeur noir à épaules marquées, découpe en spirale sur fond jaune rayé.','Nouveau',['Découpes','Sans manches']],
+ ['09','img/sebon-09.webp','Quatre Pagnes','T-shirt oversize caramel, quatre carrés de pagne tissé à franges : écru, jaune, bordeaux et noir.','',['Franges','Appliqués']],
+ ['10','img/sebon-10.webp','Diagonale Sable','T-shirt oversize sable, empiècements tissés bruns et beiges posés en diagonale depuis l’épaule.','',['Appliqués']],
+ ['11','img/sebon-11.webp','Éclats Indigo','T-shirt oversize indigo, éclats de pagne tissé ocre et noir sur le côté, finition frangée.','',['Appliqués']]
+];
+// style, classe de tuile, pièce illustrée
+const CATS=[['Franges','a','05'],['Bandes tissées','b','03'],['Appliqués','c','10'],['Sans manches','d','08'],['Découpes','e','02'],['Toute la collection','f','04']];
+let picked='04',size='M',cart=[],filter=null,showAll=false;
 const $=(id)=>document.getElementById(id);
+const fmt=(n)=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' FCFA';
+const prixDe=(id)=>CONFIG.prix[id]||CONFIG.prixParDefaut;
+const BAG='<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>';
+
 function draw(){
   const sel=P.find(p=>p[0]===picked);
   document.querySelectorAll('.g').forEach(b=>b.classList.toggle('on',b.dataset.id===picked));
-  $('selImg').src=sel[1];$('selImg').alt=sel[2];$('selRef').textContent='Pièce n° '+sel[0];$('selName').textContent=sel[2];$('selDesc').textContent=sel[3];
+  $('selImg').src=sel[1];$('selImg').alt=sel[2];$('selRef').textContent='Pièce n° '+sel[0];$('selName').textContent=sel[2];$('selDesc').textContent=sel[3];$('selPrice').textContent=fmt(prixDe(sel[0]));
   document.querySelectorAll('.sz').forEach(b=>{const on=b.textContent===size;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
   $('cart').textContent=cart.reduce((n,l)=>n+l.q,0);
 }
 const pick=(id)=>{picked=id;draw()};
+function addToCart(id){
+  const l=cart.find(l=>l.id===id&&l.size===size); if(l)l.q++; else cart.push({id,size,q:1});
+  draw();drawCart();$('cartDlg').showModal();
+}
+function drawGrid(){
+  const list=P.filter(p=>!filter||p[5].includes(filter));
+  const shown=(filter||showAll)?list:list.slice(0,8);
+  $('grid').innerHTML='';
+  shown.forEach(p=>{
+    const c=document.createElement('div');c.className='card';
+    c.innerHTML='<a class="tile" href="#fiche" aria-label="Voir '+p[2]+'">'+(p[4]?'<span class="chip">'+p[4]+'</span>':'')+'<img src="'+p[1]+'" alt="" loading="lazy"></a><div class="meta"><div><div>'+p[2]+'</div><b>'+fmt(prixDe(p[0]))+'</b></div><button class="ic" aria-label="Ajouter '+p[2]+' au panier">'+BAG+'</button></div>';
+    c.querySelector('.tile').addEventListener('click',()=>pick(p[0]));
+    c.querySelector('.ic').addEventListener('click',()=>{pick(p[0]);addToCart(p[0])});
+    $('grid').appendChild(c);
+  });
+  $('more').parentElement.style.display=(!filter&&!showAll&&list.length>8)?'block':'none';
+  $('filterBar').style.display=filter?'flex':'none';$('filterName').textContent=filter?'Style : '+filter:'';
+}
+function setFilter(f){filter=(f==='Toute la collection')?null:f;if(!filter)showAll=true;drawGrid();$('collection').scrollIntoView()}
+
 P.forEach(p=>{
   const b=document.createElement('button');b.className='g';b.dataset.id=p[0];b.setAttribute('aria-label','Voir '+p[2]);
   b.innerHTML='<span aria-hidden="true" class="hook"></span><img src="'+p[1]+'" alt="">'+(p[4]?'<span class="tag">'+p[4]+'</span>':'');
   b.addEventListener('click',()=>pick(p[0]));b.addEventListener('focus',()=>pick(p[0]));$('rail').appendChild(b);
-  const a=document.createElement('a');a.className='card';a.href='#fiche';
-  a.innerHTML='<div class="tile"><img src="'+p[1]+'" alt="" loading="lazy"></div><div class="meta"><span style="font-weight:600">'+p[2]+'</span><span style="color:#5A5348;white-space:nowrap">15.000 FCFA</span></div>';
-  a.addEventListener('click',()=>pick(p[0]));$('grid').appendChild(a);
 });
 ['S','M','L','XL'].forEach(l=>{const b=document.createElement('button');b.className='sz';b.textContent=l;b.addEventListener('click',()=>{size=l;draw()});$('sizes').appendChild(b)});
-$('add').addEventListener('click',()=>{
-  const l=cart.find(l=>l.id===picked&&l.size===size); if(l)l.q++; else cart.push({id:picked,size,q:1});
-  draw();drawCart();$('cartDlg').showModal();
+CATS.forEach(c=>{
+  const img=P.find(p=>p[0]===c[2])[1];
+  const t=document.createElement('button');t.className='mt '+c[1];t.innerHTML='<img src="'+img+'" alt="" loading="lazy"><span>'+c[0]+'</span>';
+  t.addEventListener('click',()=>setFilter(c[0]));$('mos').appendChild(t);
+  if(c[0]!=='Toute la collection'){const a=document.createElement('a');a.href='#collection';a.textContent=c[0];a.addEventListener('click',(e)=>{e.preventDefault();setFilter(c[0])});$('footCats').appendChild(a)}
 });
-const fmt=(n)=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' FCFA';
-const prixDe=(id)=>CONFIG.prix[id]||CONFIG.prixParDefaut;
+$('more').addEventListener('click',()=>{showAll=true;drawGrid()});
+$('filterReset').addEventListener('click',()=>{filter=null;showAll=true;drawGrid()});
+$('add').addEventListener('click',()=>addToCart(picked));
+
 function payText(){
   const m=document.querySelector('input[name=pay]:checked').value;
   if(m==='Wave')return 'Envoyez le montant par Wave au '+CONFIG.wave+', puis la capture du paiement sur WhatsApp. On confirme votre commande dans la foulée.';
@@ -206,22 +331,23 @@ function payText(){
   return 'Vous payez à la réception. On vous appelle pour confirmer la livraison.';
 }
 function message(){
-  const m=document.querySelector('input[name=pay]:checked').value;
-  let total=0,complet=true;
-  const lignes=cart.map(l=>{const p=P.find(p=>p[0]===l.id);const px=prixDe(l.id);if(px)total+=px*l.q;else complet=false;
-    return '• '+l.q+' × '+p[2]+' (n° '+l.id+'), taille '+l.size+(px?' : '+fmt(px*l.q):'');});
-  return ['Bonjour Sebon, je souhaite précommander :',...lignes,complet?'Total : '+fmt(total):'Total : à confirmer','',
+  const m=document.querySelector('input[name=pay]:checked').value;let total=0;
+  const lignes=cart.map(l=>{const p=P.find(p=>p[0]===l.id);const px=prixDe(l.id);total+=px*l.q;
+    return '• '+l.q+' × '+p[2]+' (n° '+l.id+'), taille '+l.size+' : '+fmt(px*l.q);});
+  return ['Bonjour Sebon, je souhaite précommander :',...lignes,'Total : '+fmt(total),'',
     'Nom : '+($('fName').value.trim()||'—'),'Livraison : '+($('fZone').value.trim()||'—'),'Paiement : '+m].join('\n');
 }
 function drawCart(){
   const box=$('cartList');box.innerHTML='';
   $('cartForm').style.display=cart.length?'flex':'none';
-  if(!cart.length){box.innerHTML='<p style="margin:0;color:#5A5348">Votre panier est vide. Choisissez une pièce sur la tringle.</p>';return}
-  cart.forEach((l,i)=>{const p=P.find(p=>p[0]===l.id);const px=prixDe(l.id);
+  if(!cart.length){box.innerHTML='<p style="margin:0;color:var(--mute)">Votre panier est vide. Choisissez une pièce sur la tringle.</p>';return}
+  let total=0;
+  cart.forEach((l,i)=>{const p=P.find(p=>p[0]===l.id);const px=prixDe(l.id);total+=px*l.q;
     const r=document.createElement('div');r.className='row';
-    r.innerHTML='<img src="'+p[1]+'" alt=""><div><div style="font-weight:600">'+p[2]+'</div><div style="font-size:14px;color:#5A5348">Taille '+l.size+' · quantité '+l.q+' · '+(px?fmt(px*l.q):'15.000 FCFA')+'</div></div>';
+    r.innerHTML='<img src="'+p[1]+'" alt=""><div><div style="font-weight:600">'+p[2]+'</div><div style="font-size:14px;color:var(--mute)">Taille '+l.size+' · quantité '+l.q+' · '+fmt(px*l.q)+'</div></div>';
     const x=document.createElement('button');x.className='x';x.textContent='×';x.setAttribute('aria-label','Retirer '+p[2]);
     x.addEventListener('click',()=>{cart.splice(i,1);draw();drawCart()});r.appendChild(x);box.appendChild(r);});
+  const t=document.createElement('div');t.style.cssText='display:flex;justify-content:space-between;padding-top:12px;font-weight:600;font-size:17px';t.innerHTML='<span>Total</span><span>'+fmt(total)+'</span>';box.appendChild(t);
   $('payNote').textContent=payText();$('demo').hidden=true;
 }
 document.querySelectorAll('input[name=pay]').forEach(r=>r.addEventListener('change',()=>{$('payNote').textContent=payText()}));
@@ -234,7 +360,7 @@ $('sendWa').addEventListener('click',()=>{
   const d=$('demo');d.hidden=false;d.innerHTML='<strong>Mode démo : numéro WhatsApp pas encore branché.</strong> Voici le message qui partira :<pre></pre>';
   d.querySelector('pre').textContent=txt;d.scrollIntoView({block:'nearest'});
 });
-draw();
+draw();drawGrid();
 </script>
 </body>
 </html>
