@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sebon — Le truc en plus</title>
+<meta name="description" content="Collection Sebon : t-shirts retravaillés à la main. Lancement en décembre, précommande au 07 09 86 99 95.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;background:#F4F1EA;color:#15120E;font-family:Inter,system-ui,sans-serif}
+a{color:#15120E}a:hover{color:#A8431F}
+button{font:inherit;color:inherit;cursor:pointer}
+.g{flex:none;width:92px;height:380px;padding:0;border:0;background:none;position:relative;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.g img{position:absolute;top:46px;left:50%;height:290px;width:auto;transform:translateX(-50%) perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 14px 14px rgba(21,18,14,.18))}
+.g:hover,.g:focus-visible,.g.on{width:262px;outline:none}
+.g:hover img,.g:focus-visible img,.g.on img{transform:translateX(-50%) scale(1.06)}
+.g .hg{transform:perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.g:hover .hg,.g:focus-visible .hg,.g.on .hg{transform:none}
+.g.on::after{content:"";position:absolute;left:50%;bottom:0;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#A8431F}
+.card:hover img{transform:scale(1.05)}
+.sz.on{background:#15120E;color:#F4F1EA}
+@media (prefers-reduced-motion:reduce){.g,.g img,.card img{transition:none}}
+
+html{scroll-behavior:smooth}
+.hg{position:absolute;top:0;left:50%;margin-left:-60px;pointer-events:none}
+.tag{position:absolute;top:30px;left:50%;margin-left:16px;background:#A8431F;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;white-space:nowrap;z-index:2}
+.card{text-decoration:none;display:flex;flex-direction:column;gap:12px}
+.tile{background:#EAE5DA;border-radius:6px;height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px;box-sizing:border-box}
+.tile img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .4s}
+.meta{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.sz{min-width:52px;height:48px;border:1.5px solid #15120E;border-radius:4px;background:transparent;font-weight:600;font-size:15px}
+</style>
+</head>
+<body>
+<div style="min-height: 100vh; background: #F4F1EA">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding: 20px clamp(20px, 5vw, 72px); border-bottom: 1px solid #DAD4C8">
+<a href="#top" style="font-family: Anton, sans-serif; font-size: 34px; letter-spacing: 0.06em; text-decoration: none; line-height: 1">SEBON</a>
+<nav style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; font-weight: 500">
+<a href="#tringle" style="text-decoration: none; padding: 12px 0">La tringle</a>
+<a href="#collection" style="text-decoration: none; padding: 12px 0">Collection</a>
+<a href="#marque" style="text-decoration: none; padding: 12px 0">La marque</a>
+<a href="#contact" style="text-decoration: none; padding: 12px 0">Contact</a>
+</nav>
+<div style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1.5px solid #15120E; border-radius: 999px; font-size: 14px; font-weight: 600">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+<span>Panier</span><span style="background: #15120E; color: #F4F1EA; border-radius: 999px; min-width: 24px; text-align: center; padding: 2px 6px"><span id="cart">0</span></span>
+</div>
+</header>
+
+<section id="top" style="text-align: center; padding: 56px clamp(20px, 5vw, 72px) 28px">
+<p style="margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #A8431F">Collection Sebon · lancement en décembre</p>
+<h1 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(44px, 8vw, 104px); line-height: 0.98; text-transform: uppercase">Le truc<br>en plus</h1>
+<p style="margin: 20px auto 0; max-width: 520px; font-size: 17px; line-height: 1.5; color: #5A5348">Désormais, à votre style, rajoutez le truc en plus. Des t-shirts retravaillés à la main : bandes tissées, franges et découpes.</p>
+</section>
+
+<section id="tringle" style="position: relative; padding-top: 8px">
+<div style="position: absolute; top: 18px; left: 0; right: 0; height: 7px; background: #15120E; border-radius: 4px"></div>
+<div style="overflow-x: auto; padding: 0 20px 18px">
+<div id="rail" style="display: flex; width: max-content; margin: 0 auto; gap: 6px; padding-top: 0">
+</div>
+</div>
+<p style="margin: 0; text-align: center; font-size: 13px; color: #5A5348; padding: 0 20px">Survole ou touche une pièce pour la retourner · fais glisser la tringle sur mobile</p>
+</section>
+
+<section id="fiche" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 32px 64px; max-width: 1120px; margin: 40px auto 0; padding: 40px clamp(20px, 5vw, 72px)">
+<div style="flex: 1 1 320px; max-width: 460px; background: #EAE5DA; border-radius: 6px; padding: 32px; display: flex; justify-content: center">
+<img id="selImg" src="" alt="" style="width: 100%; max-width: 380px; height: auto; max-height: 460px; object-fit: contain; filter: drop-shadow(0 18px 18px rgba(21,18,14,.2))">
+</div>
+<div style="flex: 1 1 320px; max-width: 460px; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #A8431F" id="selRef"></p>
+<h2 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(36px, 5vw, 56px); line-height: 1; text-transform: uppercase" id="selName"></h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5A5348" id="selDesc"></p>
+<p style="margin: 0; font-size: 24px; font-weight: 700">[PRIX] FCFA</p>
+<div>
+<p style="margin: 0 0 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Taille</p>
+<div id="sizes" style="display: flex; flex-wrap: wrap; gap: 10px">
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<button id="add" style="flex: 1 1 200px; height: 54px; border: 0; border-radius: 4px; background: #15120E; color: #F4F1EA; font-weight: 600; font-size: 16px">Précommander</button>
+<a href="tel:+2250709869995" style="flex: 1 1 200px; height: 54px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 1.5px solid #15120E; border-radius: 4px; font-weight: 600; font-size: 16px; text-decoration: none">Appeler le 07 09 86 99 95</a>
+</div>
+</div>
+</section>
+
+<section id="collection" style="max-width: 1296px; margin: 0 auto; padding: 72px clamp(20px, 5vw, 72px) 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 28px">
+<h2 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(32px, 5vw, 52px); text-transform: uppercase">Toute la collection</h2>
+<p style="margin: 0; font-size: 15px; color: #5A5348">11 pièces</p>
+</div>
+<div id="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px 20px">
+</div>
+</section>
+
+<section id="marque" style="background: #15120E; color: #F4F1EA; margin-top: 48px; padding: 72px clamp(20px, 5vw, 72px)">
+<div style="max-width: 1152px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start">
+<h2 style="flex: 1 1 320px; margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(36px, 6vw, 72px); line-height: 1; text-transform: uppercase">Quand Sebon,<br>c'est que c'est bon.</h2>
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px; font-size: 17px; line-height: 1.6; color: #D9D3C7">
+<p style="margin: 0">[HISTOIRE DE LA MARQUE — qui crée les pièces, où, depuis quand.]</p>
+<p style="margin: 0">Chaque t-shirt est coupé, effrangé et cousu à la main : aucune pièce n'est tout à fait identique à une autre.</p>
+</div>
+</div>
+</section>
+
+<footer id="contact" style="padding: 48px clamp(20px, 5vw, 72px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; font-size: 15px; line-height: 1.7">
+<div><div style="font-family: Anton, sans-serif; font-size: 28px; letter-spacing: 0.06em">SEBON</div><div style="color: #5A5348">[VILLE / ADRESSE BOUTIQUE]</div></div>
+<div><div style="font-weight: 600">Précommander</div><div><a href="tel:+2250709869995">07 09 86 99 95</a></div><div style="color: #5A5348">Livraison : [ZONES ET DÉLAIS]</div></div>
+<div><div style="font-weight: 600">Suivre</div><div style="color: #5A5348">Instagram : [COMPTE]</div><div style="color: #5A5348">TikTok : [COMPTE]</div></div>
+</footer>
+
+</div>
+<script>
+const P=[
+      ['01','img/sebon-01.webp','Zigzag Nuit','T-shirt oversize bleu nuit, appliqués zigzag en tissu tissé rose et longues bandes effrangées sur le bas.','Nouveau'],
+      ['02','img/sebon-02.webp','Écailles Camel','T-shirt oversize camel, deux colonnes de découpes lacérées qui laissent voir une doublure à motifs.',''],
+      ['03','img/sebon-03.webp','Ceinture Terre','T-shirt oversize crème, large bande de pagne tissé brun et noir bordée de franges en raphia.',''],
+      ['04','img/sebon-04.webp','Rouge Totem','T-shirt oversize rouge vif, trois fenêtres découpées sur des empiècements tissés à motifs géométriques.','Nouveau'],
+      ['05','img/sebon-05.webp','Rideau Ivoire','Débardeur oversize ivoire, rideau de lanières sur trois pagnes tissés et frange de raphia.',''],
+      ['06','img/sebon-06.webp','Ceinture Rosée','T-shirt oversize rose poudré, bande tissée bordeaux à chevrons, franges en raphia.',''],
+      ['07','img/sebon-07.webp','Zigzag Rose','T-shirt oversize rose poudré, appliqués zigzag bordeaux en diagonale, épaule et bas.',''],
+      ['08','img/sebon-08.webp','Spirale Noire','Débardeur noir à épaules marquées, découpe en spirale sur fond jaune rayé.','Nouveau'],
+      ['09','img/sebon-09.webp','Quatre Pagnes','T-shirt oversize caramel, quatre carrés de pagne tissé à franges : écru, jaune, bordeaux et noir.',''],
+      ['10','img/sebon-10.webp','Diagonale Sable','T-shirt oversize sable, empiècements tissés bruns et beiges posés en diagonale depuis l’épaule.',''],
+      ['11','img/sebon-11.webp','Éclats Indigo','T-shirt oversize indigo, éclats de pagne tissé ocre et noir sur le côté, finition frangée.','']
+];
+let picked='04',size='M',cart=0;
+const $=(id)=>document.getElementById(id);
+function draw(){
+  const sel=P.find(p=>p[0]===picked);
+  document.querySelectorAll('.g').forEach(b=>b.classList.toggle('on',b.dataset.id===picked));
+  $('selImg').src=sel[1];$('selImg').alt=sel[2];$('selRef').textContent='Pièce n° '+sel[0];$('selName').textContent=sel[2];$('selDesc').textContent=sel[3];
+  document.querySelectorAll('.sz').forEach(b=>{const on=b.textContent===size;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+  $('cart').textContent=cart;
+}
+const pick=(id)=>{picked=id;draw()};
+P.forEach(p=>{
+  const b=document.createElement('button');b.className='g';b.dataset.id=p[0];b.setAttribute('aria-label','Voir '+p[2]);
+  b.innerHTML='<svg aria-hidden="true" class="hg" viewBox="0 0 120 84" width="120" height="84" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M60 50 L7 78 M60 50 L113 78" stroke="#B88A57" stroke-width="7"></path><path d="M60 50 V31 C60 23 70 22 70 13 C70 3 52 2 51 13" stroke="#6F6A62" stroke-width="3"></path></svg><img src="'+p[1]+'" alt="">'+(p[4]?'<span class="tag">'+p[4]+'</span>':'');
+  b.addEventListener('click',()=>pick(p[0]));b.addEventListener('focus',()=>pick(p[0]));$('rail').appendChild(b);
+  const a=document.createElement('a');a.className='card';a.href='#fiche';
+  a.innerHTML='<div class="tile"><img src="'+p[1]+'" alt="" loading="lazy"></div><div class="meta"><span style="font-weight:600">'+p[2]+'</span><span style="color:#5A5348;white-space:nowrap">[PRIX] FCFA</span></div>';
+  a.addEventListener('click',()=>pick(p[0]));$('grid').appendChild(a);
+});
+['S','M','L','XL'].forEach(l=>{const b=document.createElement('button');b.className='sz';b.textContent=l;b.addEventListener('click',()=>{size=l;draw()});$('sizes').appendChild(b)});
+$('add').addEventListener('click',()=>{cart++;draw()});
+draw();
+</script>
+</body>
+</html>
