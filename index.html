@@ -86,7 +86,7 @@ pre{white-space:pre-wrap;margin:8px 0 0;font:inherit}
 <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #A8431F" id="selRef"></p>
 <h2 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(36px, 5vw, 56px); line-height: 1; text-transform: uppercase" id="selName"></h2>
 <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5A5348" id="selDesc"></p>
-<p style="margin: 0; font-size: 24px; font-weight: 700">[PRIX] FCFA</p>
+<p style="margin: 0; font-size: 24px; font-weight: 700">15.000 FCFA</p>
 <div>
 <p style="margin: 0 0 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Taille</p>
 <div id="sizes" style="display: flex; flex-wrap: wrap; gap: 10px">
@@ -171,7 +171,8 @@ const CONFIG={
   telephone:'+2250709869995',
   wave:'[NUMÉRO WAVE]',
   orangeMoney:'[NUMÉRO ORANGE MONEY]',
-  prix:{}                 // ex. {'01':15000,'02':15000} en FCFA (vide = prix à confirmer)
+  prixParDefaut:15000,     // prix de toutes les pièces, en FCFA
+  prix:{}                 // exceptions par pièce, ex. {'04':20000}
 };
 let picked='04',size='M',cart=[];
 const $=(id)=>document.getElementById(id);
@@ -188,7 +189,7 @@ P.forEach(p=>{
   b.innerHTML='<span aria-hidden="true" class="hook"></span><img src="'+p[1]+'" alt="">'+(p[4]?'<span class="tag">'+p[4]+'</span>':'');
   b.addEventListener('click',()=>pick(p[0]));b.addEventListener('focus',()=>pick(p[0]));$('rail').appendChild(b);
   const a=document.createElement('a');a.className='card';a.href='#fiche';
-  a.innerHTML='<div class="tile"><img src="'+p[1]+'" alt="" loading="lazy"></div><div class="meta"><span style="font-weight:600">'+p[2]+'</span><span style="color:#5A5348;white-space:nowrap">[PRIX] FCFA</span></div>';
+  a.innerHTML='<div class="tile"><img src="'+p[1]+'" alt="" loading="lazy"></div><div class="meta"><span style="font-weight:600">'+p[2]+'</span><span style="color:#5A5348;white-space:nowrap">15.000 FCFA</span></div>';
   a.addEventListener('click',()=>pick(p[0]));$('grid').appendChild(a);
 });
 ['S','M','L','XL'].forEach(l=>{const b=document.createElement('button');b.className='sz';b.textContent=l;b.addEventListener('click',()=>{size=l;draw()});$('sizes').appendChild(b)});
@@ -196,8 +197,8 @@ $('add').addEventListener('click',()=>{
   const l=cart.find(l=>l.id===picked&&l.size===size); if(l)l.q++; else cart.push({id:picked,size,q:1});
   draw();drawCart();$('cartDlg').showModal();
 });
-const fmt=(n)=>n.toLocaleString('fr-FR')+' FCFA';
-const prixDe=(id)=>CONFIG.prix[id];
+const fmt=(n)=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' FCFA';
+const prixDe=(id)=>CONFIG.prix[id]||CONFIG.prixParDefaut;
 function payText(){
   const m=document.querySelector('input[name=pay]:checked').value;
   if(m==='Wave')return 'Envoyez le montant par Wave au '+CONFIG.wave+', puis la capture du paiement sur WhatsApp. On confirme votre commande dans la foulée.';
@@ -218,7 +219,7 @@ function drawCart(){
   if(!cart.length){box.innerHTML='<p style="margin:0;color:#5A5348">Votre panier est vide. Choisissez une pièce sur la tringle.</p>';return}
   cart.forEach((l,i)=>{const p=P.find(p=>p[0]===l.id);const px=prixDe(l.id);
     const r=document.createElement('div');r.className='row';
-    r.innerHTML='<img src="'+p[1]+'" alt=""><div><div style="font-weight:600">'+p[2]+'</div><div style="font-size:14px;color:#5A5348">Taille '+l.size+' · quantité '+l.q+' · '+(px?fmt(px*l.q):'[PRIX] FCFA')+'</div></div>';
+    r.innerHTML='<img src="'+p[1]+'" alt=""><div><div style="font-weight:600">'+p[2]+'</div><div style="font-size:14px;color:#5A5348">Taille '+l.size+' · quantité '+l.q+' · '+(px?fmt(px*l.q):'15.000 FCFA')+'</div></div>';
     const x=document.createElement('button');x.className='x';x.textContent='×';x.setAttribute('aria-label','Retirer '+p[2]);
     x.addEventListener('click',()=>{cart.splice(i,1);draw();drawCart()});r.appendChild(x);box.appendChild(r);});
   $('payNote').textContent=payText();$('demo').hidden=true;
