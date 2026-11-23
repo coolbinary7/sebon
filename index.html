@@ -12,20 +12,18 @@
 body{margin:0;background:#F4F1EA;color:#15120E;font-family:Inter,system-ui,sans-serif}
 a{color:#15120E}a:hover{color:#A8431F}
 button{font:inherit;color:inherit;cursor:pointer}
-.g{flex:none;width:92px;height:380px;padding:0;border:0;background:none;position:relative;transition:width .45s cubic-bezier(.2,.8,.2,1)}
-.g img{position:absolute;top:46px;left:50%;height:290px;width:auto;transform:translateX(-50%) perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 14px 14px rgba(21,18,14,.18))}
+.g{flex:none;width:92px;height:372px;padding:0;border:0;background:none;position:relative;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.g img{position:absolute;top:44px;left:50%;height:290px;width:auto;transform:translateX(-50%) perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 14px 14px rgba(21,18,14,.18))}
 .g:hover,.g:focus-visible,.g.on{width:262px;outline:none}
 .g:hover img,.g:focus-visible img,.g.on img{transform:translateX(-50%) scale(1.06)}
-.g .hg{transform:perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
-.g:hover .hg,.g:focus-visible .hg,.g.on .hg{transform:none}
 .g.on::after{content:"";position:absolute;left:50%;bottom:0;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#A8431F}
 .card:hover img{transform:scale(1.05)}
 .sz.on{background:#15120E;color:#F4F1EA}
 @media (prefers-reduced-motion:reduce){.g,.g img,.card img{transition:none}}
 
 html{scroll-behavior:smooth}
-.hg{position:absolute;top:0;left:50%;margin-left:-60px;pointer-events:none}
-.tag{position:absolute;top:30px;left:50%;margin-left:16px;background:#A8431F;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;white-space:nowrap;z-index:2}
+.hook{position:absolute;top:0;left:50%;width:3px;height:52px;margin-left:-1.5px;background:#8B8478;border-radius:2px}
+.tag{position:absolute;top:26px;left:50%;margin-left:8px;background:#A8431F;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;white-space:nowrap;z-index:2}
 .card{text-decoration:none;display:flex;flex-direction:column;gap:12px}
 .tile{background:#EAE5DA;border-radius:6px;height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px;box-sizing:border-box}
 .tile img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .4s}
@@ -59,7 +57,7 @@ html{scroll-behavior:smooth}
 <section id="tringle" style="position: relative; padding-top: 8px">
 <div style="position: absolute; top: 18px; left: 0; right: 0; height: 7px; background: #15120E; border-radius: 4px"></div>
 <div style="overflow-x: auto; padding: 0 20px 18px">
-<div id="rail" style="display: flex; width: max-content; margin: 0 auto; gap: 6px; padding-top: 0">
+<div id="rail" style="display: flex; width: max-content; margin: 0 auto; gap: 6px; padding-top: 14px">
 </div>
 </div>
 <p style="margin: 0; text-align: center; font-size: 13px; color: #5A5348; padding: 0 20px">Survole ou touche une pièce pour la retourner · fais glisser la tringle sur mobile</p>
@@ -138,7 +136,7 @@ function draw(){
 const pick=(id)=>{picked=id;draw()};
 P.forEach(p=>{
   const b=document.createElement('button');b.className='g';b.dataset.id=p[0];b.setAttribute('aria-label','Voir '+p[2]);
-  b.innerHTML='<svg aria-hidden="true" class="hg" viewBox="0 0 120 84" width="120" height="84" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M60 50 L7 78 M60 50 L113 78" stroke="#B88A57" stroke-width="7"></path><path d="M60 50 V31 C60 23 70 22 70 13 C70 3 52 2 51 13" stroke="#6F6A62" stroke-width="3"></path></svg><img src="'+p[1]+'" alt="">'+(p[4]?'<span class="tag">'+p[4]+'</span>':'');
+  b.innerHTML='<span aria-hidden="true" class="hook"></span><img src="'+p[1]+'" alt="">'+(p[4]?'<span class="tag">'+p[4]+'</span>':'');
   b.addEventListener('click',()=>pick(p[0]));b.addEventListener('focus',()=>pick(p[0]));$('rail').appendChild(b);
   const a=document.createElement('a');a.className='card';a.href='#fiche';
   a.innerHTML='<div class="tile"><img src="'+p[1]+'" alt="" loading="lazy"></div><div class="meta"><span style="font-weight:600">'+p[2]+'</span><span style="color:#5A5348;white-space:nowrap">[PRIX] FCFA</span></div>';
