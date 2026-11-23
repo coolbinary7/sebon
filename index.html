@@ -29,6 +29,21 @@ html{scroll-behavior:smooth}
 .tile img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .4s}
 .meta{display:flex;justify-content:space-between;gap:12px;font-size:15px}
 .sz{min-width:52px;height:48px;border:1.5px solid #15120E;border-radius:4px;background:transparent;font-weight:600;font-size:15px}
+
+dialog{border:0;border-radius:8px;padding:0;width:min(520px,calc(100vw - 24px));max-height:calc(100vh - 24px);background:#F4F1EA;color:#15120E}
+dialog::backdrop{background:rgba(21,18,14,.55)}
+.cw{padding:24px;display:flex;flex-direction:column;gap:18px}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #DAD4C8}
+.row img{width:56px;height:64px;object-fit:contain;background:#EAE5DA;border-radius:4px}
+.x{margin-left:auto;min-width:44px;height:44px;border:0;background:none;font-size:22px}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.fld input{height:48px;border:1.5px solid #15120E;border-radius:4px;padding:0 12px;font:inherit;font-weight:400;background:#fff}
+.pay{display:flex;flex-wrap:wrap;gap:8px}
+.pay label{flex:1 1 130px;display:flex;align-items:center;gap:8px;min-height:48px;padding:0 12px;border:1.5px solid #15120E;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer}
+.note{background:#EAE5DA;border-radius:4px;padding:12px;font-size:14px;line-height:1.5}
+.btn{height:54px;border:0;border-radius:4px;background:#15120E;color:#F4F1EA;font-weight:600;font-size:16px}
+.btn2{height:54px;display:flex;align-items:center;justify-content:center;border:1.5px solid #15120E;border-radius:4px;font-weight:600;font-size:16px;text-decoration:none}
+pre{white-space:pre-wrap;margin:8px 0 0;font:inherit}
 </style>
 </head>
 <body>
@@ -42,10 +57,10 @@ html{scroll-behavior:smooth}
 <a href="#marque" style="text-decoration: none; padding: 12px 0">La marque</a>
 <a href="#contact" style="text-decoration: none; padding: 12px 0">Contact</a>
 </nav>
-<div style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1.5px solid #15120E; border-radius: 999px; font-size: 14px; font-weight: 600">
+<button id="cartBtn" aria-label="Ouvrir le panier" style="background: transparent; display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1.5px solid #15120E; border-radius: 999px; font-size: 14px; font-weight: 600">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
 <span>Panier</span><span style="background: #15120E; color: #F4F1EA; border-radius: 999px; min-width: 24px; text-align: center; padding: 2px 6px"><span id="cart">0</span></span>
-</div>
+</button>
 </header>
 
 <section id="top" style="text-align: center; padding: 56px clamp(20px, 5vw, 72px) 28px">
@@ -78,7 +93,7 @@ html{scroll-behavior:smooth}
 </div>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
-<button id="add" style="flex: 1 1 200px; height: 54px; border: 0; border-radius: 4px; background: #15120E; color: #F4F1EA; font-weight: 600; font-size: 16px">Précommander</button>
+<button id="add" style="flex: 1 1 200px; height: 54px; border: 0; border-radius: 4px; background: #15120E; color: #F4F1EA; font-weight: 600; font-size: 16px">Ajouter au panier</button>
 <a href="tel:+2250709869995" style="flex: 1 1 200px; height: 54px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 1.5px solid #15120E; border-radius: 4px; font-weight: 600; font-size: 16px; text-decoration: none">Appeler le 07 09 86 99 95</a>
 </div>
 </div>
@@ -110,6 +125,32 @@ html{scroll-behavior:smooth}
 </footer>
 
 </div>
+
+<dialog id="cartDlg" aria-labelledby="cartTitle">
+<div class="cw">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<h2 id="cartTitle" style="margin:0;font-family:Anton,sans-serif;font-weight:400;font-size:32px;text-transform:uppercase">Ma précommande</h2>
+<button class="x" id="cartClose" aria-label="Fermer">×</button>
+</div>
+<div id="cartList"></div>
+<div id="cartForm" style="display:flex;flex-direction:column;gap:18px">
+<label class="fld">Votre nom<input id="fName" autocomplete="name"></label>
+<label class="fld">Commune / quartier de livraison<input id="fZone"></label>
+<div>
+<p style="margin:0 0 8px;font-size:14px;font-weight:600">Paiement</p>
+<div class="pay">
+<label><input type="radio" name="pay" value="Wave" checked>Wave</label>
+<label><input type="radio" name="pay" value="Orange Money">Orange Money</label>
+<label><input type="radio" name="pay" value="À la livraison">À la livraison</label>
+</div>
+</div>
+<div class="note" id="payNote"></div>
+<button class="btn" id="sendWa">Envoyer ma commande sur WhatsApp</button>
+<a class="btn2" id="callBtn" href="#">Appeler pour commander</a>
+<div class="note" id="demo" hidden></div>
+</div>
+</div>
+</dialog>
 <script>
 const P=[
       ['01','img/sebon-01.webp','Zigzag Nuit','T-shirt oversize bleu nuit, appliqués zigzag en tissu tissé rose et longues bandes effrangées sur le bas.','Nouveau'],
@@ -124,14 +165,22 @@ const P=[
       ['10','img/sebon-10.webp','Diagonale Sable','T-shirt oversize sable, empiècements tissés bruns et beiges posés en diagonale depuis l’épaule.',''],
       ['11','img/sebon-11.webp','Éclats Indigo','T-shirt oversize indigo, éclats de pagne tissé ocre et noir sur le côté, finition frangée.','']
 ];
-let picked='04',size='M',cart=0;
+// ====== À RÉGLER : les vrais numéros et prix de la marque ======
+const CONFIG={
+  whatsapp:'',            // numéro WhatsApp au format international sans +, ex. 2250700000000 (vide = mode démo)
+  telephone:'+2250709869995',
+  wave:'[NUMÉRO WAVE]',
+  orangeMoney:'[NUMÉRO ORANGE MONEY]',
+  prix:{}                 // ex. {'01':15000,'02':15000} en FCFA (vide = prix à confirmer)
+};
+let picked='04',size='M',cart=[];
 const $=(id)=>document.getElementById(id);
 function draw(){
   const sel=P.find(p=>p[0]===picked);
   document.querySelectorAll('.g').forEach(b=>b.classList.toggle('on',b.dataset.id===picked));
   $('selImg').src=sel[1];$('selImg').alt=sel[2];$('selRef').textContent='Pièce n° '+sel[0];$('selName').textContent=sel[2];$('selDesc').textContent=sel[3];
   document.querySelectorAll('.sz').forEach(b=>{const on=b.textContent===size;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
-  $('cart').textContent=cart;
+  $('cart').textContent=cart.reduce((n,l)=>n+l.q,0);
 }
 const pick=(id)=>{picked=id;draw()};
 P.forEach(p=>{
@@ -143,7 +192,47 @@ P.forEach(p=>{
   a.addEventListener('click',()=>pick(p[0]));$('grid').appendChild(a);
 });
 ['S','M','L','XL'].forEach(l=>{const b=document.createElement('button');b.className='sz';b.textContent=l;b.addEventListener('click',()=>{size=l;draw()});$('sizes').appendChild(b)});
-$('add').addEventListener('click',()=>{cart++;draw()});
+$('add').addEventListener('click',()=>{
+  const l=cart.find(l=>l.id===picked&&l.size===size); if(l)l.q++; else cart.push({id:picked,size,q:1});
+  draw();drawCart();$('cartDlg').showModal();
+});
+const fmt=(n)=>n.toLocaleString('fr-FR')+' FCFA';
+const prixDe=(id)=>CONFIG.prix[id];
+function payText(){
+  const m=document.querySelector('input[name=pay]:checked').value;
+  if(m==='Wave')return 'Envoyez le montant par Wave au '+CONFIG.wave+', puis la capture du paiement sur WhatsApp. On confirme votre commande dans la foulée.';
+  if(m==='Orange Money')return 'Envoyez le montant par Orange Money au '+CONFIG.orangeMoney+', puis la capture du paiement sur WhatsApp. On confirme votre commande dans la foulée.';
+  return 'Vous payez à la réception. On vous appelle pour confirmer la livraison.';
+}
+function message(){
+  const m=document.querySelector('input[name=pay]:checked').value;
+  let total=0,complet=true;
+  const lignes=cart.map(l=>{const p=P.find(p=>p[0]===l.id);const px=prixDe(l.id);if(px)total+=px*l.q;else complet=false;
+    return '• '+l.q+' × '+p[2]+' (n° '+l.id+'), taille '+l.size+(px?' : '+fmt(px*l.q):'');});
+  return ['Bonjour Sebon, je souhaite précommander :',...lignes,complet?'Total : '+fmt(total):'Total : à confirmer','',
+    'Nom : '+($('fName').value.trim()||'—'),'Livraison : '+($('fZone').value.trim()||'—'),'Paiement : '+m].join('\n');
+}
+function drawCart(){
+  const box=$('cartList');box.innerHTML='';
+  $('cartForm').style.display=cart.length?'flex':'none';
+  if(!cart.length){box.innerHTML='<p style="margin:0;color:#5A5348">Votre panier est vide. Choisissez une pièce sur la tringle.</p>';return}
+  cart.forEach((l,i)=>{const p=P.find(p=>p[0]===l.id);const px=prixDe(l.id);
+    const r=document.createElement('div');r.className='row';
+    r.innerHTML='<img src="'+p[1]+'" alt=""><div><div style="font-weight:600">'+p[2]+'</div><div style="font-size:14px;color:#5A5348">Taille '+l.size+' · quantité '+l.q+' · '+(px?fmt(px*l.q):'[PRIX] FCFA')+'</div></div>';
+    const x=document.createElement('button');x.className='x';x.textContent='×';x.setAttribute('aria-label','Retirer '+p[2]);
+    x.addEventListener('click',()=>{cart.splice(i,1);draw();drawCart()});r.appendChild(x);box.appendChild(r);});
+  $('payNote').textContent=payText();$('demo').hidden=true;
+}
+document.querySelectorAll('input[name=pay]').forEach(r=>r.addEventListener('change',()=>{$('payNote').textContent=payText()}));
+$('cartBtn').addEventListener('click',()=>{drawCart();$('cartDlg').showModal()});
+$('cartClose').addEventListener('click',()=>$('cartDlg').close());
+$('callBtn').href='tel:'+CONFIG.telephone;
+$('sendWa').addEventListener('click',()=>{
+  const txt=message();
+  if(CONFIG.whatsapp){window.open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(txt),'_blank');return}
+  const d=$('demo');d.hidden=false;d.innerHTML='<strong>Mode démo : numéro WhatsApp pas encore branché.</strong> Voici le message qui partira :<pre></pre>';
+  d.querySelector('pre').textContent=txt;d.scrollIntoView({block:'nearest'});
+});
 draw();
 </script>
 </body>
