@@ -46,10 +46,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .bar{position:absolute;top:18px;left:0;right:0;height:7px;background:var(--ink);border-radius:4px}
 .scroll{overflow-x:auto;padding:0 20px 18px}
 #rail{display:flex;width:max-content;margin:0 auto;gap:6px;padding-top:14px}
-.g{flex:none;width:92px;height:372px;padding:0;border:0;background:none;position:relative;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.g{flex:none;width:92px;height:452px;padding:0;border:0;background:none;position:relative;transition:width .45s cubic-bezier(.2,.8,.2,1)}
 .g img{position:absolute;top:44px;left:50%;height:290px;width:auto;transform:translateX(-50%) perspective(900px) rotateY(67deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 14px 14px rgba(0,0,0,.18))}
 .g:hover,.g:focus-visible,.g.on{width:262px;outline:none}
 .g:hover img,.g:focus-visible img,.g.on img{transform:translateX(-50%) scale(1.06)}
+.g.tall img{height:380px}
+.g.tall:hover,.g.tall:focus-visible,.g.tall.on{width:230px}
 .g.on::after{content:"";position:absolute;left:50%;bottom:0;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--ink)}
 .hook{position:absolute;top:0;left:50%;width:3px;height:52px;margin-left:-1.5px;background:#9A9A9A;border-radius:2px}
 .tag{position:absolute;top:26px;left:50%;margin-left:8px;background:#fff;border:1px solid var(--line);color:var(--ink);font-size:10px;font-weight:600;padding:3px 8px;border-radius:999px;white-space:nowrap;z-index:2}
@@ -94,7 +96,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* mosaïque */
 .mos{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:118px;gap:16px;margin-top:32px}
 .mt{position:relative;border:0;padding:0;border-radius:12px;overflow:hidden;background:#1F1F1F;color:#fff;display:flex;align-items:center;justify-content:center}
-.mt img{position:absolute;inset:8% 8% -12%;width:84%;height:104%;object-fit:contain;opacity:.55;transition:transform .5s,opacity .3s}
+.mt img{position:absolute;inset:8% 8% -12%;width:84%;height:104%;object-fit:contain;object-position:top;opacity:.55;transition:transform .5s,opacity .3s}
 .mt:hover img{transform:scale(1.06);opacity:.4}
 .mt span{position:relative;font-family:"Inter Tight",sans-serif;font-weight:500;font-size:clamp(22px,3vw,34px);letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
 .a{grid-area:1/1/3/2}.b{grid-area:3/1/6/2}.c{grid-area:1/2/4/3}.d{grid-area:4/2/6/3}.e{grid-area:1/3/3/4}.f{grid-area:3/3/6/4}
@@ -151,7 +153,7 @@ Panier (<span id="cart">0</span>)
 </header>
 <div class="heroin">
 <h1>Le truc en plus</h1>
-<p>Désormais, à votre style, rajoutez le truc en plus. La collection Sebon : des t-shirts retravaillés à la main, bandes tissées, franges et découpes.</p>
+<p>Désormais, à votre style, rajoutez le truc en plus. La collection Sebon : t-shirts et ensembles retravaillés à la main, bandes tissées, franges et découpes.</p>
 <a class="pill w" href="#tringle">Voir la collection</a>
 </div>
 </div>
@@ -182,7 +184,7 @@ Panier (<span id="cart">0</span>)
 
 <section class="sec wrap" id="collection">
 <h2>La collection</h2>
-<p class="sub">Onze pièces, toutes retravaillées à la main. Aucune n'est tout à fait identique à une autre.</p>
+<p class="sub">Quinze pièces, toutes retravaillées à la main. Aucune n'est tout à fait identique à une autre.</p>
 <div id="filterBar"><span id="filterName"></span><button class="pill o" id="filterReset" style="min-height:44px;padding:0 18px">Tout voir</button></div>
 <div id="grid"></div>
 <div class="center"><button class="pill" id="more">Voir tout</button></div>
@@ -276,10 +278,14 @@ const P=[
  ['08','img/sebon-08.webp','Spirale Noire','Débardeur noir à épaules marquées, découpe en spirale sur fond jaune rayé.','Nouveau',['Découpes','Sans manches']],
  ['09','img/sebon-09.webp','Quatre Pagnes','T-shirt oversize caramel, quatre carrés de pagne tissé à franges : écru, jaune, bordeaux et noir.','',['Franges','Appliqués']],
  ['10','img/sebon-10.webp','Diagonale Sable','T-shirt oversize sable, empiècements tissés bruns et beiges posés en diagonale depuis l’épaule.','',['Appliqués']],
- ['11','img/sebon-11.webp','Éclats Indigo','T-shirt oversize indigo, éclats de pagne tissé ocre et noir sur le côté, finition frangée.','',['Appliqués']]
+ ['11','img/sebon-11.webp','Éclats Indigo','T-shirt oversize indigo, éclats de pagne tissé ocre et noir sur le côté, finition frangée.','',['Appliqués']],
+ ['12','img/sebon-12.webp','Ensemble Signes','Haut noir court à deux poches en pagne tissé noir à motifs écrus, écharpe assortie et pantalon large beige à pans croisés.','Nouveau',['Ensembles']],
+ ['13','img/sebon-13.webp','Ensemble Framboise','Haut rose poudré à poches tissées framboise frangées, écharpe assortie et pantalon large bordeaux.','Nouveau',['Ensembles']],
+ ['14','img/sebon-14.webp','Ensemble Rouge et Noir','Haut rouge à poches tissées noires frangées, col écharpe noir à motifs écrus et pantalon large noir à pans croisés.','Nouveau',['Ensembles']],
+ ['15','img/sebon-15.webp','Ensemble Émeraude','Haut bleu nuit à poches tissées vertes frangées, écharpe verte assortie et pantalon large bleu nuit à pans croisés.','Nouveau',['Ensembles']]
 ];
 // style, classe de tuile, pièce illustrée
-const CATS=[['Franges','a','05'],['Bandes tissées','b','03'],['Appliqués','c','10'],['Sans manches','d','08'],['Découpes','e','02'],['Toute la collection','f','04']];
+const CATS=[['Franges','a','05'],['Bandes tissées','b','03'],['Appliqués','c','10'],['Sans manches','d','08'],['Découpes','e','02'],['Ensembles','f','14']];
 let picked='04',size='M',cart=[],filter=null,showAll=false;
 const $=(id)=>document.getElementById(id);
 const fmt=(n)=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' FCFA';
@@ -315,7 +321,7 @@ function drawGrid(){
 function setFilter(f){filter=(f==='Toute la collection')?null:f;if(!filter)showAll=true;drawGrid();$('collection').scrollIntoView()}
 
 P.forEach(p=>{
-  const b=document.createElement('button');b.className='g';b.dataset.id=p[0];b.setAttribute('aria-label','Voir '+p[2]);
+  const b=document.createElement('button');b.className='g'+(p[5].includes('Ensembles')?' tall':'');b.dataset.id=p[0];b.setAttribute('aria-label','Voir '+p[2]);
   b.innerHTML='<span aria-hidden="true" class="hook"></span><img src="'+p[1]+'" alt="">'+(p[4]?'<span class="tag">'+p[4]+'</span>':'');
   b.addEventListener('click',()=>pick(p[0]));b.addEventListener('focus',()=>pick(p[0]));$('rail').appendChild(b);
 });
